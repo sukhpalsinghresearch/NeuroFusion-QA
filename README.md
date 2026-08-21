@@ -9,6 +9,18 @@ NeuroFusion-QA is a generalized, data-free reference implementation for separati
 
 The repository accompanies the manuscript **“NeuroFusion-QA: Separating Signal Quality from Subject-Level Utility in EEG-fMRI Fusion.”** It contains the generalized feature equations, scientific-QC and computational-integrity checks, matched classifier construction, equal and quality-aware fusion, gate-validity targets, paired subject-level bootstrap evaluation, frozen aggregate development results, and publication-style figure-generation code.
 
+## How the code supports the study
+
+The public code package is intended for method inspection, testing, and aggregate-result reproduction. It provides:
+
+- direct implementations of the manuscript's feature, QC, integrity, fusion, utility, and paired-evaluation equations;
+- matched unimodal and fused modeling utilities that preserve the study's comparison rules;
+- unit tests for numerical behavior and fail-closed safeguards;
+- a frozen, aggregate-only result file and script for reproducing the released summary figure; and
+- a methods-to-code map and automated audit of the public-release boundary.
+
+The package does **not** reproduce participant-level preprocessing from redistributed data. Raw imaging data remain at the source repository, and private notebooks, participant-level derivatives, and the protected cohort are deliberately excluded. See [`docs/METHODS_TO_CODE.md`](docs/METHODS_TO_CODE.md) and [`docs/RELEASE_BOUNDARY.md`](docs/RELEASE_BOUNDARY.md) for the exact scope.
+
 ## Scientific boundary
 
 - All bundled results are aggregate summaries from the frozen 57-subject development cohort.
@@ -72,4 +84,4 @@ tests/                           unit tests for equations and safeguards
 
 ## License and citation
 
-The source code is released under the BSD 3-Clause License. Citation metadata are provided in `CITATION.cff`. Do not upload raw or derived participant-level files without confirming the source dataset terms and the study’s protected-cohort policy.
+The source code is publicly released under the BSD 3-Clause License. If you use the implementation, equations, tests, or aggregate reproduction workflow, cite both the software release and the companion manuscript; machine-readable citation metadata are provided in `CITATION.cff`. Do not upload raw or derived participant-level files without confirming the source dataset terms and the study’s protected-cohort policy.
