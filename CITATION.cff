@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use NeuroFusion-QA, please cite the software and companion manuscript."
+title: "NeuroFusion-QA"
+version: 0.1.0
+date-released: 2026-08-21
+type: software
+authors:
+  - family-names: Singh
+    given-names: Sukhpal
+    email: ssingh1_phd23@thapar.edu
+  - family-names: Pannu
+    given-names: Husanbir Singh
+  - family-names: Saini
+    given-names: Poonam
+abstract: "A data-free implementation for distinguishing scientific quality control, computational integrity, fusion contribution, and independently validated subject-level utility."
+keywords:
+  - multimodal fusion
+  - EEG
+  - fMRI
+  - quality control
+  - reliability gating
+  - subject-level utility
+repository-code: "https://github.com/sukhpalsinghresearch/NeuroFusion-QA"
+license: BSD-3-Clause

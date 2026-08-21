@@ -1,0 +1,35 @@
+study:
+  name: NeuroFusion-QA
+  analysis_scope: development_only
+  development_subjects: 57
+  protected_subjects: 11
+  protected_access_permitted: false
+
+representations:
+  eeg_features: 33
+  fmri_features: 1440
+  require_finite: true
+  require_positive_variance: true
+
+fusion:
+  equal_fmri_weight: 0.5
+  label_free_quality_gate: enabled
+  task_trained_meta_gate: enabled
+
+evaluation:
+  outer_folds: 5
+  outer_repeats: 5
+  outer_seed: 1201
+  inner_folds: 4
+  classifier: balanced_l2_logistic_liblinear
+  maximum_iterations: 5000
+  c_grid: [0.001, 0.01, 0.1, 1.0, 10.0]
+  threshold_grid:
+    minimum: 0.05
+    maximum: 0.95
+    increment: 0.005
+  subject_bootstrap_resamples: 5000
+  primary_metrics:
+    - roc_auc
+    - brier_score
+  utility_target: absolute_error_advantage
