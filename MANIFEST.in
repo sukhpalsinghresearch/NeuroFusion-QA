@@ -1,0 +1,14 @@
+include LICENSE Licence.txt CITATION.cff environment.yml .coveragerc
+include CONTRIBUTING.md SECURITY.md CHANGELOG.md
+include results/frozen_summary.json
+recursive-include config *.json *.yaml
+recursive-include docs *.md
+recursive-include scripts *.py *.md
+recursive-include tests *.py
+recursive-include ci *.txt
+recursive-include .github/workflows *.yml
+recursive-include notebooks *.ipynb *.md
+recursive-include notebooks/artifacts *.json *.csv *.txt
+prune outputs
+prune .venv
+global-exclude *.ttf *.otf *.pyc

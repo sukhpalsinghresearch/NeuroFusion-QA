@@ -1,0 +1,1 @@
+{"eeg_rate_hz":250.0,"eeg_samples":750,"fixed_c":0.1,"fixture_seed":20260918,"fmri_rate_hz":1.25,"fmri_samples":128,"held_out_fraction":0.3333333333333333,"inner_folds":3,"model_seed":1201,"quality_directions":[1,-1,1,-1],"records":24,"scope":"synthetic_software_tutorial_not_benchmark","threshold_source":"training_only_oof_predictions"}

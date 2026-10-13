@@ -1,0 +1,94 @@
+{
+  "boundary": {
+    "clinical_claim_supported": false,
+    "e01_participant_level_access": false,
+    "e01_results_consumed": false,
+    "input_scope": "deterministic_mathematical_fixtures_only"
+  },
+  "canonical_content_sha256": "e9a7164766b17d12b5b8ac723bdedefb8ea96819d2ee8e5673a8b8c472aff82e",
+  "features": {
+    "connectivity": {
+      "sha256": "3c1e701e713941a8fd4cf381a02be198ccc0d22e8c599726de88040d747126e3",
+      "shape": [
+        360,
+        360
+      ],
+      "zero_diagonal": true
+    },
+    "eeg": {
+      "finite": true,
+      "ordering": "15 band summaries; 3 ratios; 4 spectrum summaries; 8 correlation summaries; 3 Hjorth summaries",
+      "sha256": "1558d8331ec8773cc6b3fec16af610a8b8216a402774a00c96552ff9b84bb531",
+      "shape": [
+        33
+      ]
+    },
+    "fmri": {
+      "finite": true,
+      "ordering": "360 strength; 360 ALFF; 360 fALFF; 360 regional SD",
+      "sha256": "dc9f79250e7bea4f0359794b160462709e76b284a45625c1921c565dba2fcedd",
+      "shape": [
+        1440
+      ]
+    }
+  },
+  "inputs": {
+    "eeg_shape": [
+      8,
+      1000
+    ],
+    "fmri_shape": [
+      360,
+      160
+    ]
+  },
+  "integrity": {
+    "constant_failure": {
+      "all_finite": true,
+      "expected_shape": [
+        33
+      ],
+      "observed_shape": [
+        33
+      ],
+      "passed": false,
+      "positive_variance": false
+    },
+    "eeg_pass": {
+      "all_finite": true,
+      "expected_shape": [
+        33
+      ],
+      "observed_shape": [
+        33
+      ],
+      "passed": true,
+      "positive_variance": true
+    },
+    "fmri_pass": {
+      "all_finite": true,
+      "expected_shape": [
+        1440
+      ],
+      "observed_shape": [
+        1440
+      ],
+      "passed": true,
+      "positive_variance": true
+    },
+    "shape_failure": {
+      "all_finite": true,
+      "expected_shape": [
+        33
+      ],
+      "observed_shape": [
+        32
+      ],
+      "passed": false,
+      "positive_variance": true
+    }
+  },
+  "notebook_id": "01_S01_Synthetic_Feature_Contracts",
+  "schema_version": "1.0",
+  "seed": 20260918
+}

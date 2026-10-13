@@ -1,0 +1,16 @@
+[run]
+branch = True
+source_pkgs = neurofusion_qa
+data_file = outputs/.coverage
+
+[report]
+show_missing = True
+precision = 2
+# Provisional engineering floor, not an author-approved submission threshold.
+fail_under = 85
+
+[xml]
+output = outputs/coverage.xml
+
+[html]
+directory = outputs/coverage_html

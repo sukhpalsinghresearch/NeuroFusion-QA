@@ -1,0 +1,12 @@
+# Preserve the bytes bound by the frozen evidence manifests across platforms.
+* text=auto
+src/neurofusion_qa/*.py -text
+scripts/*.py -text
+config/*.json -text
+notebooks/*.ipynb -text
+notebooks/artifacts/* -text
+notebooks/figures/* -text
+notebooks/figures/previews/* -text
+*.png binary
+*.pdf binary
+*.svg -text

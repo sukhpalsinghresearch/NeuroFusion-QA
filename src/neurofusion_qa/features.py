@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
+from scipy.integrate import trapezoid
 from scipy.signal import periodogram, welch
 
 
@@ -34,7 +35,7 @@ def eeg_features_33(signal: ArrayLike, sampling_rate: float = 250.0) -> NDArray[
     bandpower = []
     for low, high in EEG_BANDS:
         mask = (frequencies >= low) & (frequencies <= high)
-        bandpower.append(np.trapz(psd[:, mask], frequencies[mask], axis=1))
+        bandpower.append(trapezoid(psd[:, mask], frequencies[mask], axis=1))
     powers = np.stack(bandpower, axis=1)
     spectral = np.asarray(
         [stat(powers[:, band]) for band in range(5) for stat in
@@ -74,11 +75,22 @@ def eeg_features_33(signal: ArrayLike, sampling_rate: float = 250.0) -> NDArray[
 
 
 def fisher_connectivity(regional_series: ArrayLike) -> NDArray[np.float64]:
-    """Return the clipped Fisher-z regional correlation matrix, with zero diagonal."""
+    """Return clipped Fisher-z correlations with a zero diagonal.
+
+    Require at least two regions, two samples, and finite nonconstant rows.
+    Constant rows have undefined Pearson correlations and are rejected rather
+    than assigning a scientifically unsupported connectivity value.
+    """
     series = np.asarray(regional_series, dtype=float)
-    if series.ndim != 2 or series.shape[0] < 2:
+    if series.ndim != 2 or series.shape[0] < 2 or series.shape[1] < 2:
         raise ValueError("regional_series must be regions by samples")
+    if not np.all(np.isfinite(series)):
+        raise ValueError("regional_series contains non-finite values")
+    if np.any(np.all(series == series[:, :1], axis=1)):
+        raise ValueError("regional_series contains constant rows with undefined correlations")
     corr = np.corrcoef(series)
+    if not np.all(np.isfinite(corr)):
+        raise ValueError("regional correlations must be finite")
     z = np.arctanh(np.clip(corr, -0.999999, 0.999999))
     np.fill_diagonal(z, 0.0)
     return z
@@ -102,4 +114,3 @@ def fmri_features_1440(regional_series: ArrayLike, sampling_rate: float = 1.25) 
     if result.shape != (1440,) or not np.all(np.isfinite(result)):
         raise RuntimeError("fMRI feature construction did not produce 1440 finite values")
     return result
-

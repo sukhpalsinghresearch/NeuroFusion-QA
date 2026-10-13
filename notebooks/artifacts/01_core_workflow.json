@@ -1,0 +1,527 @@
+{
+  "boundary": {
+    "clinical_claim_supported": false,
+    "e01_participant_level_access": false,
+    "e01_results_consumed": false,
+    "input_scope": "deterministic_mathematical_fixtures_only"
+  },
+  "canonical_content_sha256": "4257a01eb9ba89fc18203880f5f47f3247cffb34a8c13304eb44366e9802f014",
+  "environment": {
+    "neurofusion-qa": "0.1.0",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1"
+  },
+  "feature_evidence": {
+    "file_sha256": "a61e0cc088213e0297969b6f38341d95b06369539e9f5eb76a8d2c1e6458c8fa",
+    "path": "notebooks/artifacts/01_feature_contracts.json"
+  },
+  "fusion": {
+    "endpoint_recovery": true,
+    "failures": [
+      {
+        "case": "nonfinite_probability",
+        "exception": "ValueError",
+        "message": "p_eeg contains non-finite values"
+      },
+      {
+        "case": "infinite_probability",
+        "exception": "ValueError",
+        "message": "p_eeg contains non-finite values"
+      },
+      {
+        "case": "probability_outside_bounds",
+        "exception": "ValueError",
+        "message": "p_eeg must lie in [0, 1]"
+      },
+      {
+        "case": "probability_shape",
+        "exception": "ValueError",
+        "message": "unimodal probabilities must have the same shape"
+      },
+      {
+        "case": "invalid_weight",
+        "exception": "ValueError",
+        "message": "w_fmri must lie in [0, 1]"
+      },
+      {
+        "case": "negative_quality",
+        "exception": "ValueError",
+        "message": "quality scores must be non-negative"
+      },
+      {
+        "case": "zero_total_quality",
+        "exception": "ValueError",
+        "message": "at least one modality must have positive quality"
+      },
+      {
+        "case": "invalid_direction",
+        "exception": "ValueError",
+        "message": "directions must contain only -1 or +1"
+      },
+      {
+        "case": "invalid_availability",
+        "exception": "ValueError",
+        "message": "availability must be a binary subject-level vector"
+      }
+    ],
+    "generated_valid_cases": 512,
+    "probability_bounds": true,
+    "utility_independent_of_gate": true,
+    "weight_normalization": true
+  },
+  "modelling": {
+    "benchmark_metrics_reported": false,
+    "each_record_held_out_once_per_repeat": true,
+    "fixture_kind": "independent_synthetic_compact_interface_arrays",
+    "fixture_seed": 20260918,
+    "folds": [
+      {
+        "fold": 0,
+        "held_out_index_sha256": "935590c41561bdfc80e96f0c388c8faaa8f40ce5284c5e0f2d6ab4b7f601d746",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 0,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "48a891f320a8daa7fba311b334edfb6cbfe7ab8f924ab1ceec3e646271401fbf",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.5924999999999998
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.5224999999999997
+          }
+        }
+      },
+      {
+        "fold": 1,
+        "held_out_index_sha256": "132725baa0517d31c98bcd0eebde880bc2685b1d9d842ec1872a27554c12212f",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 0,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "2505f33dbb4b288f0600710cecd03901c4f105cfb1651493ffe4c365f3873f94",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.31999999999999984
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.5099999999999998
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "held_out_index_sha256": "2b8d9d029e835d712cd9558900b94590541c542ffb98cd6f10095978c05b9ff1",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 0,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "dfb2bfc76a782ddcd3d249048d744ed382f18616faf29a1339b370d249f1fe27",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.6974999999999998
+          },
+          "fmri": {
+            "selected_c": 0.1,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.5199999999999998
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "held_out_index_sha256": "b26d1c6893a71883e01caac221ee0f4487181c400da7f33758e9e79a8d3b415d",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 0,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "ad9c9dee58c016788d9d0ec6a48caf9301829a5e52c4ce091a98d8a04ed6b595",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 0.1,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.6074999999999997
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.3599999999999998
+          }
+        }
+      },
+      {
+        "fold": 0,
+        "held_out_index_sha256": "6f5ed206c03861c989b0698e7db12e7623abe05c7541083f7c35f95f623990fc",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 1,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "932c587107966a2990f63ed936e34aadca1527c864b20d3a5a4fa79841c9662c",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 10.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.6599999999999997
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.48249999999999976
+          }
+        }
+      },
+      {
+        "fold": 1,
+        "held_out_index_sha256": "7d859deab1f34f7c23f2e22ddc4c92a7c8a0ce3dd4bf38039e28e4bda49b5f06",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 1,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "301a913af135dee3f22cfb0a47825a30ef462d0277e8ee5695fee497cf49a91a",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.3949999999999998
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.4149999999999998
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "held_out_index_sha256": "4973afe6c181e0d5f3db2579f986968b1587dd8f19f9e2427cdd330071ef6b76",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 1,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "e3eff455c94025e868eecaf331152768bb34fe00d922c95f207c8a30f8fa3e33",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 0.1,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.5749999999999997
+          },
+          "fmri": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.33499999999999985
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "held_out_index_sha256": "c383f2223bf04c4e0c9d00beccfba146bea480c29ff9d4dfc1d3e60c2ce14e12",
+        "held_out_records": 20,
+        "inner_folds": 3,
+        "quality_fit_on_training_only": true,
+        "repeat": 1,
+        "shared_modality_splits": true,
+        "train_test_disjoint": true,
+        "training_index_sha256": "e9f05783cb16862720702771c4939d23746823eff9f3b5de74e4def63135bd9a",
+        "training_records": 60,
+        "tuning": {
+          "eeg": {
+            "selected_c": 1.0,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.6599999999999997
+          },
+          "fmri": {
+            "selected_c": 0.1,
+            "threshold_input_records": 60,
+            "training_oof_threshold": 0.48999999999999977
+          }
+        }
+      }
+    ],
+    "inner_folds": 3,
+    "model_seed": 1201,
+    "outer_folds": 4,
+    "outer_repeats": 2,
+    "predictions": {
+      "eeg": {
+        "averaged_shape": [
+          80
+        ],
+        "maximum": 0.9955667825001022,
+        "minimum": 0.01822717725236824,
+        "repeat_shape": [
+          2,
+          80
+        ],
+        "rounded_probability_sha256": "5666a4cb36bff11eef4d32aac949132aad9afa4de98a497fc0e7398ac393227e"
+      },
+      "equal": {
+        "averaged_shape": [
+          80
+        ],
+        "maximum": 0.9185032346714906,
+        "minimum": 0.051563471759539424,
+        "repeat_shape": [
+          2,
+          80
+        ],
+        "rounded_probability_sha256": "c61910a0b3fc10bd31d4fcc3f8cee0e0c15ed02a4a5a453c27195944642699da"
+      },
+      "fmri": {
+        "averaged_shape": [
+          80
+        ],
+        "maximum": 0.9669719192475443,
+        "minimum": 0.014732192552226936,
+        "repeat_shape": [
+          2,
+          80
+        ],
+        "rounded_probability_sha256": "e98a4d8bd7301321987a583d9b70c29b4dd409fbc56d738d172f0fedcce55be5"
+      },
+      "quality": {
+        "averaged_shape": [
+          80
+        ],
+        "maximum": 0.922532896469531,
+        "minimum": 0.05073928152184108,
+        "repeat_shape": [
+          2,
+          80
+        ],
+        "rounded_probability_sha256": "8690245736ae822dc43552dfd44ae8145f6a8694db541e4f9750e8b0aeb8c249"
+      }
+    },
+    "records": 80,
+    "same_seed_replay_matches": true,
+    "selection_metric": "training_oof_brier_score",
+    "threshold_source": "selected_model_training_oof_predictions"
+  },
+  "notebook_id": "01_S01_Synthetic_Core_Workflow",
+  "qc": {
+    "baseline_measurements": {
+      "censored_fraction": 0.1,
+      "centroid_distance_mm": 2.0,
+      "finite_connectome": true,
+      "minimum_filtered_regional_sd": 0.1,
+      "parcels_present": 360,
+      "parcels_with_10_voxels": 360,
+      "registration_dice": 0.9
+    },
+    "independent_gates": [
+      {
+        "integrity_pass": true,
+        "scientific_qc_pass": true
+      },
+      {
+        "integrity_pass": true,
+        "scientific_qc_pass": false
+      },
+      {
+        "integrity_pass": false,
+        "scientific_qc_pass": true
+      },
+      {
+        "integrity_pass": false,
+        "scientific_qc_pass": false
+      }
+    ],
+    "threshold_cases": [
+      {
+        "criterion": "censored_fraction",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 0.19
+      },
+      {
+        "criterion": "censored_fraction",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 0.2
+      },
+      {
+        "criterion": "censored_fraction",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 0.21
+      },
+      {
+        "criterion": "registration_dice",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 0.69
+      },
+      {
+        "criterion": "registration_dice",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 0.7
+      },
+      {
+        "criterion": "registration_dice",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 0.71
+      },
+      {
+        "criterion": "centroid_distance_mm",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 7.9
+      },
+      {
+        "criterion": "centroid_distance_mm",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 8.0
+      },
+      {
+        "criterion": "centroid_distance_mm",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 8.1
+      },
+      {
+        "criterion": "parcels_present",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 356
+      },
+      {
+        "criterion": "parcels_present",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 357
+      },
+      {
+        "criterion": "parcels_present",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 358
+      },
+      {
+        "criterion": "parcels_with_10_voxels",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 357
+      },
+      {
+        "criterion": "parcels_with_10_voxels",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 358
+      },
+      {
+        "criterion": "parcels_with_10_voxels",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 359
+      },
+      {
+        "criterion": "finite_connectome",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": false
+      },
+      {
+        "criterion": "finite_connectome",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": true
+      },
+      {
+        "criterion": "minimum_filtered_regional_sd",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": -0.01
+      },
+      {
+        "criterion": "minimum_filtered_regional_sd",
+        "expected_pass": false,
+        "observed_pass": false,
+        "value": 0.0
+      },
+      {
+        "criterion": "minimum_filtered_regional_sd",
+        "expected_pass": true,
+        "observed_pass": true,
+        "value": 0.01
+      }
+    ]
+  },
+  "quality": {
+    "availability_scores": [
+      0.5,
+      0.0
+    ],
+    "held_out_transform_preserves_fit": true,
+    "leaky_refit_changes_percentiles": true,
+    "quality_path_uses_labels": false,
+    "scaled_held_out": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        5.0,
+        -5.0
+      ]
+    ],
+    "training_median": [
+      1.5,
+      20.0
+    ],
+    "training_p10": [
+      0.30000000000000004,
+      12.0
+    ],
+    "training_p90": [
+      2.7,
+      36.0
+    ]
+  },
+  "schema_version": "1.0",
+  "source_sha256": {
+    "scripts/s01_core_workflow.py": "6df4073b9174b6f6c30275af5fb5e0cc959446153f3f630944eaacacc8cd7a82",
+    "src/neurofusion_qa/__init__.py": "1c0cd1a71330850db12d2f9f42ca25e570380a5667e0d04e964e15eb3ca9f1ed",
+    "src/neurofusion_qa/evaluation.py": "2148ac2e852931134ce1646fc8b0c3c7856ee10048423f790ec5595d2d7a328a",
+    "src/neurofusion_qa/features.py": "5cd91796e9a8fe1b65233049cfafc46255da1df9e55c7bdc450d06e95bcb463f",
+    "src/neurofusion_qa/gating.py": "6e95de09e205657bec8b4dbcefa798e6a700b8b7183fba8c6f97a9b0814af0a0",
+    "src/neurofusion_qa/integrity.py": "b666bd2fe521a325a7fedd0f07129e476e703fb1237c8140d06173d0eb32cbba",
+    "src/neurofusion_qa/modeling.py": "5dac88b14cb753528fb040454fe25774c933a8aa35139379c9515eaeb0ef4161",
+    "src/neurofusion_qa/provenance.py": "4d75121c17f5aa0b4a8a2c88d27c61763b2cea7d003a9790f4035eee85f40ab0",
+    "src/neurofusion_qa/qc.py": "1afa8c7a8be6dfb2dadc8534e040709956b4d39449055dad661181b981a2fb68",
+    "src/neurofusion_qa/quality.py": "687d7b527e51c00ef79104e54f1f2c6de05419c1d528890c0cc1fe330d397be9"
+  }
+}

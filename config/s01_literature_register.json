@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "review_date": "2026-10-12",
+  "scope": "targeted_primary_source_screening_not_systematic_or_reproduction",
+  "is_experimental_protocol": false,
+  "executed_external_comparators": 0,
+  "review_document": "docs/S01_DIRECT_COMPARATOR_REVIEW.md",
+  "records": [
+    {
+      "id": "L01",
+      "title": "Multi-modal Cross-domain Self-supervised Pre-training for fMRI and EEG Fusion",
+      "source_year": 2024,
+      "primary_url": "https://arxiv.org/html/2409.19130v1",
+      "version": "arXiv v1; final journal text equivalence unverified",
+      "read_scope": "selected_full_text_sections",
+      "category": "direct_eeg_fmri_classification_candidate",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    },
+    {
+      "id": "L02",
+      "title": "Performance of data-driven inner speech decoding with same-task EEG-fMRI data fusion and bimodal models",
+      "source_year": 2023,
+      "primary_url": "https://arxiv.org/html/2306.10854v1",
+      "version": "arXiv v1",
+      "read_scope": "selected_full_text_sections",
+      "category": "direct_eeg_fmri_classification_candidate",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    },
+    {
+      "id": "L03",
+      "title": "Trusted Multi-View Classification",
+      "source_year": 2021,
+      "primary_url": "https://arxiv.org/abs/2102.02051",
+      "version": "author abstract; accepted ICLR 2021 metadata",
+      "read_scope": "primary_abstract_only",
+      "category": "general_quality_aware_multiview_candidate",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    },
+    {
+      "id": "L04",
+      "title": "Enhancing Testing-Time Robustness for Trusted Multi-View Classification in the Wild",
+      "source_year": 2025,
+      "primary_url": "https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Enhancing_Testing-Time_Robustness_for_Trusted_Multi-View_Classification_in_the_Wild_CVPR_2025_paper.html",
+      "version": "CVPR 2025 proceedings",
+      "read_scope": "primary_abstract_and_indexed_first_page",
+      "category": "general_quality_aware_multiview_candidate",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    },
+    {
+      "id": "L05",
+      "title": "Trusted Multi-View Classification via Evolutionary Multi-View Fusion",
+      "source_year": 2025,
+      "primary_url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/7058bc192a37f5e5a57398887b05f6f6-Abstract-Conference.html",
+      "version": "ICLR 2025 proceedings",
+      "read_scope": "primary_abstract_only",
+      "category": "general_quality_aware_multiview_candidate",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    },
+    {
+      "id": "L06",
+      "title": "CineBrain: A Large-Scale Multi-Modal Brain Dataset During Naturalistic Audiovisual Narrative Processing",
+      "source_year": 2025,
+      "primary_url": "https://arxiv.org/html/2503.06940v1",
+      "version": "arXiv v1",
+      "read_scope": "selected_full_text_sections",
+      "category": "paired_eeg_fmri_task_mismatch",
+      "executed_in_s01": false,
+      "reproduction_ready": false
+    }
+  ]
+}

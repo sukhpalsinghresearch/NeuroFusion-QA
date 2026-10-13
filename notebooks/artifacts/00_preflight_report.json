@@ -1,0 +1,36 @@
+{
+  "boundary": {
+    "e01_participant_level_access": false,
+    "e01_results_consumed": false,
+    "input_scope": "public_metadata_and_documentation_only",
+    "release_boundary_metadata_checked": true,
+    "release_validator": "Release validation passed: aggregate-only, protected access count 0, no prohibited artifacts."
+  },
+  "canonical_content_sha256": "408d4f4ce5606eb2d23c90ea993ba120d1c2f13506c40b45eff4776460c8222a",
+  "environment": {
+    "implementation": "CPython",
+    "packages": {
+      "neurofusion-qa": "0.1.0",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "platform_machine": "AMD64",
+    "platform_system": "Windows",
+    "python": "3.12.14"
+  },
+  "notebook_id": "00_S01_Environment_Boundary_Audit",
+  "permitted_input_files": [
+    "data/README.md"
+  ],
+  "protocol": {
+    "path": "config/protocol.example.yaml",
+    "sha256": "ade2af9d65729c9dd7befd97594247c60af4918a538c3004d814f6b3be77e7c8"
+  },
+  "schema_version": "1.0",
+  "seed_policy": {
+    "bootstrap_seed": 20260816,
+    "model_seed": 1201,
+    "synthetic_fixture_seed": 20260918
+  }
+}

@@ -21,9 +21,12 @@ class RobustQualityScaler:
 
     @classmethod
     def fit(cls, training_quality: ArrayLike, *, clip: float = 5.0) -> "RobustQualityScaler":
+        """Fit on training values; NaN denotes missingness, infinities are invalid."""
         values = np.asarray(training_quality, dtype=float)
-        if values.ndim != 2 or values.shape[0] < 2:
+        if values.ndim != 2 or values.shape[0] < 2 or values.shape[1] == 0:
             raise ValueError("training_quality must be a two-dimensional subject-by-variable array")
+        if np.any(np.isinf(values)):
+            raise ValueError("training_quality contains infinite values; use NaN for missing values")
         if np.any(np.all(~np.isfinite(values), axis=0)):
             raise ValueError("each quality variable needs at least one finite training value")
         return cls(

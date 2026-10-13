@@ -1,0 +1,72 @@
+name: Package contracts and wheel installation
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wheel-tests:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }} / ${{ matrix.dependencies }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.11', '3.12', '3.13']
+        dependencies: [floor, newest]
+    env:
+      MPLBACKEND: Agg
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install build and coverage tools
+        run: python -m pip install --upgrade pip build coverage
+      - name: Build sdist and wheel
+        run: python -m build --outdir outputs/dist
+      - name: Install actual wheel with selected dependency policy
+        shell: python
+        env:
+          DEPENDENCY_POLICY: ${{ matrix.dependencies }}
+          PYTHON_VERSION: ${{ matrix.python }}
+        run: |
+          import os, pathlib, subprocess, sys
+          wheels = list(pathlib.Path('outputs/dist').glob('*.whl'))
+          assert len(wheels) == 1, wheels
+          command = [sys.executable, '-m', 'pip', 'install', str(wheels[0]) + '[test,figures]']
+          if os.environ['DEPENDENCY_POLICY'] == 'floor':
+              command += ['-c', 'ci/constraints-py' + os.environ['PYTHON_VERSION'].replace('.', '') + '.txt']
+          subprocess.run(command, check=True)
+          subprocess.run([sys.executable, '-m', 'pip', 'check'], check=True)
+          subprocess.run([sys.executable, '-I', 'scripts/check_wheel_install.py', '--wheel', str(wheels[0])], check=True)
+      - name: Full test suite against installed wheel, with branch coverage
+        run: python -I -m coverage run -m pytest -W error --junitxml=outputs/junit.xml
+      - name: Coverage gate and reports
+        run: |
+          python -m coverage report
+          python -m coverage xml
+          python -m coverage html
+      - name: Release boundary validation
+        run: python -I scripts/validate_release.py
+      - name: Executable API documentation
+        run: python -I scripts/check_api_docs.py
+      - name: Preserve public engineering reports only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engineering-${{ matrix.os }}-py${{ matrix.python }}-${{ matrix.dependencies }}
+          if-no-files-found: warn
+          path: |
+            outputs/coverage.xml
+            outputs/coverage_html/
+            outputs/junit.xml
+            outputs/wheel_install_verification.json
+            outputs/api_documentation_check.json

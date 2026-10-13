@@ -8,8 +8,20 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT_SUFFIXES = {".cff", ".json", ".md", ".py", ".toml", ".txt", ".yaml", ".yml"}
+TEXT_SUFFIXES = {".cff", ".ipynb", ".json", ".md", ".py", ".toml", ".txt", ".yaml", ".yml"}
 FORBIDDEN_SUFFIXES = {".eeg", ".fif", ".nii", ".npy", ".npz", ".vhdr", ".vmrk"}
+EXCLUDED_DIRECTORIES = {
+    ".git",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "outputs",
+}
 FORBIDDEN_PATTERNS = {
     "private key": re.compile(r"BEGIN (?:OPENSSH |RSA |EC )?PRIVATE KEY"),
     "DGX path": re.compile(r"(?<![A-Za-z0-9_])/workspace/"),
@@ -18,12 +30,32 @@ FORBIDDEN_PATTERNS = {
 }
 
 
+def json_strings(value: object):
+    """Yield decoded strings so JSON escaping cannot hide restricted content."""
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        # Notebook source and outputs can split a sensitive string across lines.
+        if all(isinstance(item, str) for item in value):
+            yield "".join(value)
+        else:
+            for item in value:
+                yield from json_strings(item)
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            yield str(key)
+            yield from json_strings(item)
+
+
 def main() -> None:
     problems: list[str] = []
     for path in ROOT.rglob("*"):
-        if not path.is_file() or any(part in {".git", ".pytest_cache", "__pycache__", "outputs"} for part in path.parts):
-            continue
         relative = path.relative_to(ROOT)
+        if not path.is_file() or any(
+            part in EXCLUDED_DIRECTORIES or part.endswith(".egg-info")
+            for part in relative.parts
+        ):
+            continue
         if relative.as_posix() == "scripts/validate_release.py":
             continue
         suffixes = {suffix.lower() for suffix in path.suffixes}
@@ -31,6 +63,11 @@ def main() -> None:
             problems.append(f"forbidden data type: {relative}")
         if path.suffix.lower() in TEXT_SUFFIXES:
             text = path.read_text(encoding="utf-8", errors="replace")
+            if path.suffix.lower() in {".ipynb", ".json"}:
+                try:
+                    text = "\n".join(json_strings(json.loads(text)))
+                except (json.JSONDecodeError, ValueError):
+                    problems.append(f"invalid JSON artifact: {relative}")
             for label, pattern in FORBIDDEN_PATTERNS.items():
                 if pattern.search(text):
                     problems.append(f"{label}: {relative}")

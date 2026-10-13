@@ -8,6 +8,8 @@ from numpy.typing import ArrayLike, NDArray
 
 def _as_probability(values: ArrayLike, name: str) -> NDArray[np.float64]:
     array = np.asarray(values, dtype=float)
+    if array.size == 0:
+        raise ValueError(f"{name} must be nonempty")
     if not np.all(np.isfinite(array)):
         raise ValueError(f"{name} contains non-finite values")
     if np.any((array < 0.0) | (array > 1.0)):
@@ -16,7 +18,7 @@ def _as_probability(values: ArrayLike, name: str) -> NDArray[np.float64]:
 
 
 def equal_fusion(p_eeg: ArrayLike, p_fmri: ArrayLike) -> NDArray[np.float64]:
-    """Average two matched unimodal probabilities."""
+    """Average two matched, nonempty unimodal probability arrays."""
     eeg = _as_probability(p_eeg, "p_eeg")
     fmri = _as_probability(p_fmri, "p_fmri")
     if eeg.shape != fmri.shape:
@@ -39,19 +41,30 @@ def soft_fusion(
 def label_free_quality_weight(
     eeg_quality: ArrayLike, fmri_quality: ArrayLike, epsilon: float = 1e-12
 ) -> NDArray[np.float64]:
-    """Normalize positive modality-quality scores into an fMRI fusion weight."""
+    """Normalize nonempty, finite nonnegative quality masses into fMRI weights.
+
+    Total quality must exceed finite nonnegative ``epsilon``. Large masses are
+    halved together before summation to avoid overflow without changing ratios.
+    """
     eeg = np.asarray(eeg_quality, dtype=float)
     fmri = np.asarray(fmri_quality, dtype=float)
     if eeg.shape != fmri.shape:
         raise ValueError("quality arrays must have the same shape")
+    if eeg.size == 0:
+        raise ValueError("quality arrays must be nonempty")
+    if not np.isfinite(epsilon) or epsilon < 0:
+        raise ValueError("epsilon must be finite and non-negative")
     if not np.all(np.isfinite(eeg)) or not np.all(np.isfinite(fmri)):
         raise ValueError("quality arrays contain non-finite values")
     if np.any(eeg < 0.0) or np.any(fmri < 0.0):
         raise ValueError("quality scores must be non-negative")
-    denominator = eeg + fmri
-    if np.any(denominator <= epsilon):
+    large = np.maximum(eeg, fmri) > np.finfo(float).max / 2
+    safe_eeg = np.where(large, eeg * 0.5, eeg)
+    safe_fmri = np.where(large, fmri * 0.5, fmri)
+    denominator = safe_eeg + safe_fmri
+    if np.any(denominator <= np.where(large, epsilon * 0.5, epsilon)):
         raise ValueError("at least one modality must have positive quality")
-    return fmri / denominator
+    return safe_fmri / denominator
 
 
 def continuous_utility(

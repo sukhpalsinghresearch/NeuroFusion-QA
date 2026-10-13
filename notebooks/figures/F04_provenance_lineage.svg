@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1019.27952pt" height="371.27952pt" viewBox="0 0 1019.27952 371.27952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-11T20:18:56.905519</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 371.27952 
+L 1019.27952 371.27952 
+L 1019.27952 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 64.319952 173.752607 
+L 153.359952 173.752607 
+Q 164.559952 173.752607 164.559952 162.552607 
+L 164.559952 132.869873 
+Q 164.559952 121.669873 153.359952 121.669873 
+L 64.319952 121.669873 
+Q 53.119952 121.669873 53.119952 132.869873 
+L 53.119952 162.552607 
+Q 53.119952 173.752607 64.319952 173.752607 
+z
+" style="fill: #eef3f7; stroke: #255f85; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(73.078702 143.640439)">Namespaced</text>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(64.319952 158.481806)">observation IDs</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 252.486262 173.755888 
+L 365.99345 173.755888 
+Q 377.19345 173.755888 377.19345 162.555888 
+L 377.19345 132.866592 
+Q 377.19345 121.666592 365.99345 121.666592 
+L 252.486262 121.666592 
+Q 241.286262 121.666592 241.286262 132.866592 
+L 241.286262 162.555888 
+Q 241.286262 173.755888 252.486262 173.755888 
+z
+" style="fill: #eef3f7; stroke: #255f85; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(252.486262 143.637158)">Cardinality-checked</text>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(279.110325 158.485088)">paired join</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 184.988246 147.71124 
+Q 209.038546 147.71124 230.852779 147.71124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 224.052779 144.31124 
+L 230.852779 147.71124 
+L 224.052779 151.11124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <g id="patch_5">
+     <path d="M 463.176166 173.752607 
+L 556.103354 173.752607 
+Q 567.303354 173.752607 567.303354 162.552607 
+L 567.303354 132.869873 
+Q 567.303354 121.669873 556.103354 121.669873 
+L 463.176166 121.669873 
+Q 451.976166 121.669873 451.976166 132.869873 
+L 451.976166 162.552607 
+Q 451.976166 173.752607 463.176166 173.752607 
+z
+" style="fill: #eef3f7; stroke: #255f85; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(471.007416 143.640439)">Training-only</text>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(463.176166 158.481806)">fit / held-out test</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 385.38815 147.71124 
+Q 409.43845 147.71124 431.252683 147.71124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 424.452683 144.31124 
+L 431.252683 147.71124 
+L 424.452683 151.11124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <g id="patch_7">
+     <path d="M 680.886852 173.745498 
+L 739.192477 173.745498 
+Q 750.392477 173.745498 750.392477 162.545498 
+L 750.392477 132.876982 
+Q 750.392477 121.676982 739.192477 121.676982 
+L 680.886852 121.676982 
+Q 669.686852 121.676982 669.686852 132.876982 
+L 669.686852 162.545498 
+Q 669.686852 173.745498 680.886852 173.745498 
+z
+" style="fill: #eef3f7; stroke: #255f85; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(680.886852 143.63333)">Aggregate</text>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(685.165602 158.474697)">evidence</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 585.788054 147.71124 
+Q 609.838354 147.71124 631.652587 147.71124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 624.852587 144.31124 
+L 631.652587 147.71124 
+L 624.852587 151.11124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <g id="patch_9">
+     <path d="M 857.374099 173.752607 
+L 963.505037 173.752607 
+Q 974.705037 173.752607 974.705037 162.552607 
+L 974.705037 132.869873 
+Q 974.705037 121.669873 963.505037 121.669873 
+L 857.374099 121.669873 
+Q 846.174099 121.669873 846.174099 132.869873 
+L 846.174099 162.552607 
+Q 846.174099 173.752607 857.374099 173.752607 
+z
+" style="fill: #eef3f7; stroke: #255f85; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(876.221599 143.640439)">Hash-bound</text>
+    <text style="font-size: 14px; font-family: 'Times New Roman'" transform="translate(857.374099 158.481806)">execution manifest</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 786.187958 147.71124 
+Q 810.238258 147.71124 832.052491 147.71124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 825.252491 144.31124 
+L 832.052491 147.71124 
+L 825.252491 151.11124 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 21px; font-family: 'Times New Roman'; text-anchor: middle" x="509.63976" y="40.2471" transform="rotate(-0 509.63976 40.2471)">Pairing and provenance contract</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 14px; font-family: 'Times New Roman'; text-anchor: middle" x="509.63976" y="274.13964" transform="rotate(-0 509.63976 274.13964)">Fail closed: missing / duplicate / cross-namespace keys; unsafe paths; changed files</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 14px; font-family: 'Times New Roman'; text-anchor: middle" x="509.63976" y="331.03242" transform="rotate(-0 509.63976 331.03242)">Hashes detect changes relative to a trusted digest; they do not authenticate the executor.</text>
+   </g>
+  </g>
+ </g>
+</svg>

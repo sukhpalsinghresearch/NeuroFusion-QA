@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use NeuroFusion-QA, please cite the software and companion manuscript."
 title: "NeuroFusion-QA"
-version: 0.1.0
-date-released: 2026-08-21
+version: 0.1.1
+date-released: 2026-10-13
 type: software
 authors:
   - family-names: Singh
@@ -12,7 +12,7 @@ authors:
     given-names: Husanbir Singh
   - family-names: Saini
     given-names: Poonam
-abstract: "A data-free implementation for distinguishing scientific quality control, computational integrity, fusion contribution, and independently validated subject-level utility."
+abstract: "Python interfaces and synthetic examples separating supplied scientific quality control, computational integrity, quality-based fusion, held-out modality utility and declared execution provenance. No clinical or external-dataset validation is claimed."
 keywords:
   - multimodal fusion
   - EEG
@@ -21,4 +21,5 @@ keywords:
   - reliability gating
   - subject-level utility
 repository-code: "https://github.com/sukhpalsinghresearch/NeuroFusion-QA"
+url: "https://github.com/sukhpalsinghresearch/NeuroFusion-QA/releases/tag/v0.1.1"
 license: BSD-3-Clause

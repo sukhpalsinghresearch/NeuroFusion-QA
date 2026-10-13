@@ -23,7 +23,8 @@ def make_classifier(*, c: float = 1.0, seed: int = 1201) -> Pipeline:
         ("imputer", SimpleImputer(strategy="median")),
         ("scaler", StandardScaler()),
         ("classifier", LogisticRegression(
-            penalty="l2", C=c, class_weight="balanced", solver="liblinear",
+            # The default remains L2; explicit penalty is deprecated in sklearn 1.8+.
+            C=c, class_weight="balanced", solver="liblinear",
             max_iter=5000, random_state=seed,
         )),
     ])

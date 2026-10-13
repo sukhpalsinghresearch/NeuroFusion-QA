@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "neurofusion-qa"
-version = "0.1.0"
+version = "0.1.1"
 description = "Quality, integrity, fusion, and utility validation for multimodal biomedical models"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,7 +21,8 @@ dependencies = [
 
 [project.optional-dependencies]
 figures = ["matplotlib>=3.8"]
-test = ["pytest>=8"]
+test = ["pytest>=8", "matplotlib>=3.8"]
+notebooks = ["ipykernel>=6.29", "nbconvert>=7.16"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -29,4 +30,3 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
-

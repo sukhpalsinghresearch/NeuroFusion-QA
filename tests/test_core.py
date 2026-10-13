@@ -75,3 +75,15 @@ def test_feature_dimensions() -> None:
     regional = rng.normal(size=(360, 120))
     assert fisher_connectivity(regional).shape == (360, 360)
     assert fmri_features_1440(regional).shape == (1440,)
+
+
+def test_eeg_bandpower_is_numpy_2_compatible() -> None:
+    """Regression test for the removal of numpy.trapz in NumPy 2.x."""
+    time = np.arange(1000, dtype=float) / 250.0
+    signal = np.vstack([
+        np.sin(2.0 * np.pi * frequency * time)
+        for frequency in (3.0, 6.0, 10.0, 18.0)
+    ])
+    features = eeg_features_33(signal)
+    assert features.shape == (33,)
+    assert np.all(np.isfinite(features))
