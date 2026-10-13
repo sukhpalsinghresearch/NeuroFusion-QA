@@ -32,14 +32,14 @@ def save(path, payload):
 
 def test_wheel_source_parity(fixture_wheel):
     root, path, payload = fixture_wheel
-    for name in ('LICENSE', 'Licence.txt'):
+    for name in ('LICENSE', 'Licence.txt', 'LICENSE.txt'):
         payload['neurofusion_qa-0.1.0.dist-info/licenses/' + name] = (root / 'LICENSE').read_bytes()
     save(path, payload)
     assert set(wheel_check.inspect_wheel(path, root)) == {'neurofusion_qa/__init__.py'}
 
 
 @pytest.mark.parametrize('change', ['stale', 'missing', 'private_payload', 'metadata',
-                                    'license', 'license_alias'])
+                                    'license', 'license_alias', 'journal_license_alias'])
 def test_invalid_wheel_fails_closed(fixture_wheel, change):
     root, path, payload = fixture_wheel
     if change == 'stale':
@@ -48,8 +48,9 @@ def test_invalid_wheel_fails_closed(fixture_wheel, change):
         del payload['neurofusion_qa/__init__.py']
     elif change == 'private_payload':
         payload['outputs/.fonts/private.ttf'] = b'private fixture'
-    elif change in ('license', 'license_alias'):
-        name = 'LICENSE' if change == 'license' else 'Licence.txt'
+    elif change in ('license', 'license_alias', 'journal_license_alias'):
+        name = {'license': 'LICENSE', 'license_alias': 'Licence.txt',
+                'journal_license_alias': 'LICENSE.txt'}[change]
         payload['neurofusion_qa-0.1.0.dist-info/licenses/' + name] = b'changed license'
     else:
         del payload['neurofusion_qa-0.1.0.dist-info/RECORD']

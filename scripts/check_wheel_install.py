@@ -33,14 +33,14 @@ def inspect_wheel(wheel: Path, root: Path = ROOT) -> dict[str, str]:
         prefix = metadata_names[0].removesuffix('METADATA')
         allowed_metadata = {prefix + n for n in (
             'METADATA', 'WHEEL', 'RECORD', 'top_level.txt', 'LICENSE', 'licenses/LICENSE',
-            'licenses/Licence.txt')}
+            'licenses/Licence.txt', 'LICENSE.txt', 'licenses/LICENSE.txt')}
         if set(names) - set(sources) - allowed_metadata:
             raise ValueError('Unexpected wheel payload: only package code and distribution metadata are allowed')
         if not {prefix + n for n in ('METADATA', 'WHEEL', 'RECORD')} <= set(names):
             raise ValueError('Missing required wheel metadata')
         if not set(sources) <= set(names):
             raise ValueError('Wheel is missing public package code')
-        for name in ('LICENSE', 'licenses/LICENSE', 'licenses/Licence.txt'):
+        for name in ('LICENSE', 'licenses/LICENSE', 'licenses/Licence.txt', 'LICENSE.txt', 'licenses/LICENSE.txt'):
             if prefix + name in names and archive.read(prefix + name) != (root / 'LICENSE').read_bytes():
                 raise ValueError(f'Wheel license differs from source: {name}')
         hashes = {}
