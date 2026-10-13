@@ -58,6 +58,8 @@ Each OS/Python job builds an sdist and wheel, installs the wheel (never an edita
 
 The 3.10/3.11 jobs exercise declared lower bounds. Newer Python jobs use selected early wheel-compatible releases, not claimed absolute minimum versions; global minimum pins cannot be installed on every newer interpreter. The `newest` policy resolves the newest permitted available versions at execution time and is not a permanent lockfile. Transitive and engineering-tool versions are resolver-selected in both policies. Neither policy has yet been verified across all 16 combinations.
 
+The floor sets also pin Pyparsing 3.1.4 because Matplotlib 3.8/3.9 use aliases that newer Pyparsing deprecates. The first hosted run exposed this during collection with warnings treated as errors. This is a transitive test-environment compatibility constraint, not suppression of the warnings gate or a numerical-source change. The newest jobs retain resolver-selected Pyparsing.
+
 The workflow follows the [GitHub Python matrix/install/test guidance](https://docs.github.com/en/actions/tutorials/build-and-test-code/python) and [PyPA build guidance](https://packaging.python.org/en/latest/tutorials/packaging-projects/). Coverage uses an explicit package source scope and branch measurement as described in the [coverage configuration reference](https://coverage.readthedocs.io/en/latest/config.html).
 
 ## Boundaries and reports

@@ -1,4 +1,4 @@
-include LICENSE Licence.txt CITATION.cff environment.yml .coveragerc
+include LICENSE LICENSE.txt Licence.txt CITATION.cff environment.yml .coveragerc
 include CONTRIBUTING.md SECURITY.md CHANGELOG.md
 include results/frozen_summary.json
 recursive-include config *.json *.yaml
