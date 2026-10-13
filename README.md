@@ -23,18 +23,6 @@ The public code package is intended for method inspection, testing, and aggregat
 
 The package does **not** reproduce participant-level preprocessing from redistributed data. Raw imaging data remain at the source repository, and private notebooks, participant-level derivatives, and the protected cohort are deliberately excluded. See [`docs/METHODS_TO_CODE.md`](docs/METHODS_TO_CODE.md) and [`docs/RELEASE_BOUNDARY.md`](docs/RELEASE_BOUNDARY.md) for the exact scope.
 
-## How the code supports the study
-
-The public code package is intended for method inspection, testing, and aggregate-result reproduction. It provides:
-
-- direct implementations of the manuscript's feature, QC, integrity, fusion, utility, and paired-evaluation equations;
-- matched unimodal and fused modeling utilities that preserve the study's comparison rules;
-- unit tests for numerical behavior and fail-closed safeguards;
-- a frozen, aggregate-only result file and script for reproducing the released summary figure; and
-- a methods-to-code map and automated audit of the public-release boundary.
-
-The package does **not** reproduce participant-level preprocessing from redistributed data. Raw imaging data remain at the source repository, and private notebooks, participant-level derivatives, and the protected cohort are deliberately excluded. See [`docs/METHODS_TO_CODE.md`](docs/METHODS_TO_CODE.md) and [`docs/RELEASE_BOUNDARY.md`](docs/RELEASE_BOUNDARY.md) for the exact scope.
-
 ## Scientific boundary
 
 - `results/frozen_summary.json` contains legacy aggregate summaries from the frozen 57-subject development cohort; it is not S01 analytical evidence. The separate S01 notebook artifacts are synthetic software-validation results.

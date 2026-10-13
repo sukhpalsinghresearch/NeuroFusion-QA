@@ -2,6 +2,8 @@
 
 ## Scope and current evidence
 
+Release update, 13 October 2026: version 0.1.1 is the SoftwareX snapshot. Its newly built wheel passed 115 local Windows tests; all nine package modules retain the source-bound numerical bytes. The 11-12 October records below describe earlier 0.1.0 build validations. Read the exact 0.1.1 revision's GitHub Actions run for hosted results; a workflow configuration or local pass is not a hosted pass. Publishing code does not replace independent human reproduction or author approval of the paper.
+
 The runtime contract remains Python >=3.10, NumPy >=1.24, SciPy >=1.10 and scikit-learn >=1.3. These are dependency declarations, not proof that every allowed combination works. The configured target is CPython 3.10–3.13 on Linux and Windows; macOS, later Python versions and the full hosted matrix remain unverified.
 
 On 11 October 2026 a newly created, non-system-site-packages Windows Python 3.12.14 environment resolved the wheel's dependencies from PyPI and passed all 113 tests with warnings treated as errors. It used NumPy 2.5.4, SciPy 1.18.1, scikit-learn 1.9.1, Matplotlib 3.11.2 and pytest 9.1.1. Nine installed package files matched both the built wheel and current source exactly; the import was non-editable and outside the source checkout. This is separate from the earlier 97-test notebook environment and DGX kernel runs.
@@ -12,7 +14,7 @@ The DGX notebook environment was not changed. All 106 existing aggregate/figure 
 
 Measured package coverage, including branch opportunities, is **90.24%** (428 statements, 166 branches). The first measurement was 84.51% and exposed an untested gate-validity API. Direct pairwise-AUC, rank-correlation, paired-resample/replay and invalid-input tests raised coverage without changing numerical implementations or lowering the provisional 85% floor. This is not 100% path coverage, a formal scientific validation or an author-approved submission threshold. The coverage scope is `neurofusion_qa`, not all scripts/notebooks.
 
-The source tree now contains the CI workflow, but no hosted green run is claimed. Nothing has been committed, pushed, tagged or published by this validation step. The 16-job matrix must run against the actual submitted source and retain a linkable result before claiming supported-platform certification.
+The 11-12 October validation did not itself commit, push, tag or publish code and did not establish a hosted green run. The 16-job matrix must run against the actual submitted source and retain a linkable result before claiming supported-platform certification.
 
 ## Fresh wheel installation
 
@@ -27,9 +29,9 @@ python -m venv outputs/wheel-test
 Activate the new environment (`outputs/wheel-test/Scripts/Activate.ps1` in PowerShell, or `source outputs/wheel-test/bin/activate` on Linux). Then:
 
 ```bash
-python -m pip install "outputs/dist/neurofusion_qa-0.1.0-py3-none-any.whl[test]" coverage
+python -m pip install "outputs/dist/neurofusion_qa-0.1.1-py3-none-any.whl[test]" coverage
 python -m pip check
-python -I scripts/check_wheel_install.py --wheel outputs/dist/neurofusion_qa-0.1.0-py3-none-any.whl
+python -I scripts/check_wheel_install.py --wheel outputs/dist/neurofusion_qa-0.1.1-py3-none-any.whl
 python -I -m coverage run -m pytest -W error
 python -m coverage report
 python -m coverage xml
